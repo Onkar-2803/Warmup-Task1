@@ -19,12 +19,13 @@
 - Final Code was merged with main branch in CSE 210 Team 2 Organisation.
 
 ### 3. Future Changes
-- Code is to be modular. Unit testing is to be done. We are planning to use JEST for unit testing. Deploying the code.
+- Code is to be modular. Unit testing is to be done. We are planning to use JEST for unit testing. Deploying the code. Code Documentation
 
 ## Action Items:
 1. Make the code Modular
 2. Do Unit Testing.
 3. Netlify for code deployment.
+4. Code Documentation.
 
 ---
 
