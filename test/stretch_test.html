@@ -7,19 +7,23 @@
     <script type = "module" src="../src/app.js"></script>
 	</head>
 	<body>
-		<h1>Using epub-type</h1>
-		<p>There once was a <span epub-type="stretchsummary">girl</span><span epub-type="stretchdetail"> Her name was <span epub-type="stretchsummary">Nancy</span><span epub-type="stretchdetail">That was my mother's name.</span> Some stuff at the end</span></p>
-		<p>Most scientists accept <a href="#global-warming-details" epub-type="stretchsummary">global warming</a>.</p>
-		<aside id="global-warming-details" epub-type="stretchdetail">
-			<p>More details on global warming. <a epub-type="stretchsummary" href="#evenmore">More supporting evidence</a></p>
-			<ol id="evenmore" epub-type="stretchdetail">
-				<li>Greater degrees of CO<sub>2</sub></li>
-				<li>Evidence of warming <span epub-type="stretchsummary">trend</span><span epub-type="stretchdetail"> It's the truth -- accept it!</span>.</li>
-			</ol>
-		</aside>
-		<p>This is material at the bottom of the page that will get stretched down.</p>
+		<div class="parent">
+			<h1>Using epub-type</h1>
+			<p>There once was a <span epub-type="stretchsummary">girl</span><span epub-type="stretchdetail"> Her name was <span epub-type="stretchsummary">Nancy</span><span epub-type="stretchdetail">That was my mother's name.</span> Some stuff at the end</span></p>
+			<p>Most scientists accept <a href="#global-warming-details" epub-type="stretchsummary">global warming</a>.</p>
+			<aside id="global-warming-details" epub-type="stretchdetail">
+				<p>More details on global warming. <a epub-type="stretchsummary" href="#evenmore">More supporting evidence</a></p>
+				<ol id="evenmore" epub-type="stretchdetail">
+					<li>Greater degrees of CO<sub>2</sub></li>
+					<li>Evidence of warming <span epub-type="stretchsummary">trend</span><span epub-type="stretchdetail"> It's the truth -- accept it!</span>.</li>
+				</ol>
+			</aside>
+			<p>This is material at the bottom of the page that will get stretched down.</p>
+		</div>
 
-		<h1>Using CSS Class</h1>
+		<div class="child"></div>
+
+		<!-- <h1>Using CSS Class</h1>
 		<p>There once was a <span class="stretchsummary">girl</span><span class="stretchdetail"> Her name was <span class="stretchsummary">Nancy</span><span class="stretchdetail">That was my mother's name.</span> Some stuff at the end</span></p>
 		<p>Most scientists accept <a href="#global-warming-details3" class="stretchsummary">global warming</a>.</p>
 		<aside id="global-warming-details3" class="stretchdetail">
@@ -29,6 +33,78 @@
 				<li>Evidence of warming <span class="stretchsummary">trend</span><span class="stretchdetail"> It's the truth -- accept it!</span>.</li>
 			</ol>
 		</aside>
-		<p>This is material at the bottom of the page that will get stretched down.</p>
+		<p>This is material at the bottom of the page that will get stretched down.</p> -->
+
 	</body>
 </html>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Find the container with the class "epub"
+        const parentContainer = document.querySelector('.parent');
+		const childContainer = document.querySelector('.child');
+
+		// cssContainer = epubContainer;
+		if (parentContainer && childContainer) {
+            // Move epubContainer inside cssContainer
+			const cloneParentContainer = parentContainer.cloneNode(true);
+				
+				// Access the <h1> tag within the cloneEpubContainer
+				const h1TagWithinClone = cloneParentContainer.querySelector('h1');
+				if (h1TagWithinClone) {
+					// Do something with the h1TagWithinClone
+					h1TagWithinClone.textContent = 'Using CSS Class';
+				}
+				
+				const spanElements = cloneParentContainer.querySelectorAll('span[epub-type]');
+				// Replace 'epub-type' with 'class' for each <span> element
+				spanElements.forEach(span => {
+					const epubType = span.getAttribute('epub-type');
+					span.removeAttribute('epub-type');
+					span.classList.add(epubType);
+				});
+
+				const asideElements = cloneParentContainer.querySelectorAll('aside[epub-type]');
+				// Replace 'epub-type' with 'class' for each <span> element
+					asideElements.forEach(aside => {
+					const epubType = aside.getAttribute('epub-type');
+					aside.removeAttribute('epub-type');
+					aside.classList.add(epubType);
+
+					let asideId = aside.getAttribute('id');
+					asideId = asideId + "3";
+					aside.setAttribute('id', asideId);
+				});
+
+				const olElements = cloneParentContainer.querySelectorAll('ol[epub-type]');
+				// Replace 'epub-type' with 'class' for each <span> element
+					olElements.forEach(ol => {
+					const epubType = ol.getAttribute('epub-type');
+					ol.removeAttribute('epub-type');
+					ol.classList.add(epubType);
+
+					let olId = ol.getAttribute('id');
+					olId = olId + "3";
+					ol.setAttribute('id', olId);
+				});
+
+				const aElements = cloneParentContainer.querySelectorAll('a[epub-type]');
+				// Replace 'epub-type' with 'class' for each <span> element
+				aElements.forEach(a => {
+					const epubType = a.getAttribute('epub-type');
+					a.removeAttribute('epub-type');
+					a.classList.add(epubType);
+
+					let aHref = a.getAttribute('href');
+					aHref = aHref + "3";
+					a.setAttribute('href', aHref);
+				});
+
+
+			// Append the clone to the cssContainer
+			childContainer.innerHTML = '';
+			childContainer.appendChild(cloneParentContainer);
+        }
+    });
+</script>
