@@ -3,8 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<link type="text/css" rel="stylesheet" href="../src/stretchtext.css">
-		<!-- <script defer src="../src/stretchtext.js"></script>  -->
-    <script type = "module" src="../src/app.js"></script>
+    	<script type = "module" src="../src/app.js"></script>
 	</head>
 	<body>
 		<div class="parent">
@@ -20,31 +19,15 @@
 			</aside>
 			<p>This is material at the bottom of the page that will get stretched down.</p>
 		</div>
-
 		<div class="child"></div>
-
-		<!-- <h1>Using CSS Class</h1>
-		<p>There once was a <span class="stretchsummary">girl</span><span class="stretchdetail"> Her name was <span class="stretchsummary">Nancy</span><span class="stretchdetail">That was my mother's name.</span> Some stuff at the end</span></p>
-		<p>Most scientists accept <a href="#global-warming-details3" class="stretchsummary">global warming</a>.</p>
-		<aside id="global-warming-details3" class="stretchdetail">
-			<p>More details on global warming. <a class="stretchsummary" href="#evenmore3">More supporting evidence</a></p>
-			<ol id="evenmore3" class="stretchdetail">
-				<li>Greater degrees of CO<sub>2</sub></li>
-				<li>Evidence of warming <span class="stretchsummary">trend</span><span class="stretchdetail"> It's the truth -- accept it!</span>.</li>
-			</ol>
-		</aside>
-		<p>This is material at the bottom of the page that will get stretched down.</p> -->
-
 	</body>
 </html>
 
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Find the container with the class "epub"
         const parentContainer = document.querySelector('.parent');
 		const childContainer = document.querySelector('.child');
-
 		// cssContainer = epubContainer;
 		if (parentContainer && childContainer) {
             // Move epubContainer inside cssContainer
@@ -53,7 +36,6 @@
 				// Access the <h1> tag within the cloneEpubContainer
 				const h1TagWithinClone = cloneParentContainer.querySelector('h1');
 				if (h1TagWithinClone) {
-					// Do something with the h1TagWithinClone
 					h1TagWithinClone.textContent = 'Using CSS Class';
 				}
 				
