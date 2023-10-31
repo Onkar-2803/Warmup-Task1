@@ -92,3 +92,19 @@ describe('process events', () => {
         expect(document.querySelector('#t-girl-detail').style.display).toBe('none');
     });
 });
+
+describe('app', () => {
+    beforeAll(async () => {
+        document.body.innerHTML = test_html;
+        await import('./app');
+    });
+    it('duplicates the document', () => {
+        document.dispatchEvent(new Event("DOMContentLoaded"));
+        expect(getSummaries()).toHaveLength(10);
+    });
+    it('updates the attributes', () => {
+        const parent = document.querySelector('.parent aside');
+        const child = document.querySelector('.child aside');
+        expect(child.id).toBe(parent.id + '3');
+    });
+})
