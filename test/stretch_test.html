@@ -25,68 +25,31 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const parentContainer = document.querySelector('.parent');
+	function updateElementsWithAttributes(cloneParentContainer, elementSelector, attributeName, updateAttribute) {
+		const elements = cloneParentContainer.querySelectorAll(`${elementSelector}[${attributeName}]`);
+		elements.forEach(element => {
+			const attributeValue = element.getAttribute(attributeName);
+			element.removeAttribute(attributeName);
+			element.classList.add(attributeValue);
+
+			if (updateAttribute == 'id' || updateAttribute == 'href') {
+				let attributeValue = element.getAttribute(updateAttribute);
+				attributeValue = attributeValue + "3";
+				element.setAttribute(updateAttribute, attributeValue);
+				console.log(element);
+			}
+		});
+	}
+	document.addEventListener('DOMContentLoaded', function () {
+		const parentContainer = document.querySelector('.parent');
 		const childContainer = document.querySelector('.child');
-		// cssContainer = epubContainer;
 		if (parentContainer && childContainer) {
-            // Move epubContainer inside cssContainer
 			const cloneParentContainer = parentContainer.cloneNode(true);
-				
-				// Access the <h1> tag within the cloneEpubContainer
-				const h1TagWithinClone = cloneParentContainer.querySelector('h1');
-				if (h1TagWithinClone) {
-					h1TagWithinClone.textContent = 'Using CSS Class';
-				}
-				
-				const spanElements = cloneParentContainer.querySelectorAll('span[epub-type]');
-				// Replace 'epub-type' with 'class' for each <span> element
-				spanElements.forEach(span => {
-					const epubType = span.getAttribute('epub-type');
-					span.removeAttribute('epub-type');
-					span.classList.add(epubType);
-				});
-
-				const asideElements = cloneParentContainer.querySelectorAll('aside[epub-type]');
-				// Replace 'epub-type' with 'class' for each <span> element
-					asideElements.forEach(aside => {
-					const epubType = aside.getAttribute('epub-type');
-					aside.removeAttribute('epub-type');
-					aside.classList.add(epubType);
-
-					let asideId = aside.getAttribute('id');
-					asideId = asideId + "3";
-					aside.setAttribute('id', asideId);
-				});
-
-				const olElements = cloneParentContainer.querySelectorAll('ol[epub-type]');
-				// Replace 'epub-type' with 'class' for each <span> element
-					olElements.forEach(ol => {
-					const epubType = ol.getAttribute('epub-type');
-					ol.removeAttribute('epub-type');
-					ol.classList.add(epubType);
-
-					let olId = ol.getAttribute('id');
-					olId = olId + "3";
-					ol.setAttribute('id', olId);
-				});
-
-				const aElements = cloneParentContainer.querySelectorAll('a[epub-type]');
-				// Replace 'epub-type' with 'class' for each <span> element
-				aElements.forEach(a => {
-					const epubType = a.getAttribute('epub-type');
-					a.removeAttribute('epub-type');
-					a.classList.add(epubType);
-
-					let aHref = a.getAttribute('href');
-					aHref = aHref + "3";
-					a.setAttribute('href', aHref);
-				});
-
-
-			// Append the clone to the cssContainer
-			childContainer.innerHTML = '';
 			childContainer.appendChild(cloneParentContainer);
-        }
-    });
+			updateElementsWithAttributes(cloneParentContainer, 'span', 'epub-type', '');
+			updateElementsWithAttributes(cloneParentContainer, 'aside', 'epub-type', 'id');
+			updateElementsWithAttributes(cloneParentContainer, 'ol', 'epub-type', 'id');
+			updateElementsWithAttributes(cloneParentContainer, 'a', 'epub-type', 'href');
+		}
+	});
 </script>
