@@ -18,8 +18,8 @@
 
 ## Details:
 
-### 1. Refractor HTML
-- @shreyaslabh Used JS to refractor HTML for Taks-1 to eliminate redudancy. @Onkar-2803 removed remaining vendor-prefixed version. 
+### 1. Refractor HTML, JS, CSS
+- @shreyaslabh Used JS to refractor HTML for Taks-1 to eliminate redudancy. @Onkar-2803 removed remaining vendor-prefixed version. We also removed old vendor-prefixed version from CSS.
 
 ### 2. Modularised the code
 - We collectively as a team reviewed the refactoring of the code that @Sizizii worked on.
