@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (parentContainer && childContainer) {
     const cloneParentContainer = parentContainer.cloneNode(true);
     childContainer.appendChild(cloneParentContainer);
+    cloneParentContainer.querySelector('h1').textContent = 'Using CSS Class';
     updateElementsWithAttributes(cloneParentContainer, 'span', 'epub-type', '', '0');
     updateElementsWithAttributes(cloneParentContainer, 'aside', 'epub-type', 'id', '3');
     updateElementsWithAttributes(cloneParentContainer, 'ol', 'epub-type', 'id', '3');
