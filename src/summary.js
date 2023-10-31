@@ -3,11 +3,6 @@ const TITLE_WHEN_OPEN = 'Collapse';
 
 const requestAnimationFrame =
       window.requestAnimationFrame || // standard way to schedule animations
-      // browser-specific
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame || 
-      window.oRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
       // if none available, self-set frame rate
       function (callback) {
         window.setTimeout(callback, 1000 / 60);
